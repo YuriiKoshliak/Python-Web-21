@@ -1,16 +1,15 @@
-from aiohttp import web
+import sqlite3
 
 
-async def index(request):
-    return web.Response(body="Hello",
-                         status=200,
-                         content_type="text/html")
+insert_query = "INSERT INTO jobs(id) VALUES(1)"
+update_query = "UPDATE jobs SET id=2 WHERE id=1"
 
-async def hello(request):
-    return web.Response(body="<h2>Hello from hello</h2>", status=200)
+select_query = "SELECT COUNT(*) FROM jobs"
 
-if __name__ == "__main__":
-    app = web.Application()
-    app.add_routes([web.get("/", index), web.get("/hello", hello)])
+with sqlite3.connect("example.db") as conn:
+    cursor = conn.cursor()
 
-    web.run_app(app, host="localhost") 
+    cursor.execute(select_query)
+
+    print(cursor.fetchone())
+

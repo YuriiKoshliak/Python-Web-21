@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "poetry package"
+version = "0.1"
+description = "Testing poetry"
+authors = ["Yurii Koshliak <satorxp10@gmail.com>"]
+license = "Nolicense"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sqlalchemy = "^2.0.29"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
